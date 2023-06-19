@@ -27,8 +27,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 articles = soup.select('.news_tit')
 
 if articles:
-    for i in range(min(5, len(articles))):  # 최대 5개의 기사만 추출합니다.
-        article = articles[i]
+    for article in articles:
         title = article.text
         link = article['href']
         print(title)
@@ -37,3 +36,5 @@ if articles:
 
         # 기사 페이지로 이동합니다.
         webbrowser.open(link)
+else:
+    print("검색 결과가 없습니다.")
